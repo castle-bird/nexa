@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.18'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'nexacro'
+version = '0.0.1-SNAPSHOT'
+description = 'Nexacro blog'
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(17) }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 17
+}
+
+configurations {
+    compileOnly { extendsFrom annotationProcessor }
+}
+
+repositories {
+    // ✅ 반드시 추가 (지금 빠져 있어서 의존성 해석이 실패 중)
+    mavenCentral()
+
+    // 사내 Nexus 쓰면 여기도 추가
+    // maven {
+    //     url = uri('https://mangosteen.tobesoft.co.kr/nexus/repository/maven-public')
+    //     credentials {
+    //         username = findProperty("tobesoftRepoUser") ?: ""
+    //         password = findProperty("tobesoftRepoPass") ?: ""
+    //     }
+    // }
+}
+
+dependencies {
+    // Spring
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // ✅ 필요 시 강제 진단용(임시): spring-webmvc를 명시 추가
+    implementation 'org.springframework:spring-webmvc:5.3.31'
+    
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Nexacro 관련 JAR - 로컬 libs 폴더 사용
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // poi 필요 시(엑셀에서 ClassNotFound 날 때만)
+    // implementation 'org.apache.poi:poi:5.2.5'
+    // implementation 'org.apache.poi:poi-ooxml:5.2.5'
+    
+    // ✅ JSP 엔진(Jasper) — JspWriter 포함
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+
+    // ✅ JSTL(선택) — JSP를 전혀 안 써도 안전하게 함께 넣어두면 좋음
+    implementation 'javax.servlet:jstl:1.2'
+    
+     // ✅ MyBatis (Spring Boot 2.5~2.7 호환)
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
+}
+
+tasks.named('test') { useJUnitPlatform() }

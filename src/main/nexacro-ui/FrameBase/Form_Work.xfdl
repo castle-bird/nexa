@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Work" width="1440" height="900" titletext="Form_Work" onload="Form_Work_onload">
+    <Layouts>
+      <Layout width="1440" height="900" screenid="Desktop_screen">
+        <Edit id="Edit00" taborder="0" left="-34" top="-34" width="140" height="20"/>
+        <Panel id="Panel00" taborder="6" left="0" height="415" bottom="49" right="0" flexcrossaxisalign="center" flexmainaxisalign="center" spacing="10">
+          <Contents>
+            <PanelItem id="PanelItem00" componentid="Div00"/>
+          </Contents>
+        </Panel>
+        <Grid id="grdList" taborder="1" left="24" top="198" binddataset="ds_list" autofittype="col" oninput="grdList_oninput" nodatatext="조회된 값이 없습니다." right="24" showselection="true" bottom="Panel00:30">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="48" band="left"/>
+                <Column size="80"/>
+                <Column size="80" band="right"/>
+              </Columns>
+              <Rows>
+                <Row size="62" band="head"/>
+                <Row size="48"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상태"/>
+                <Cell col="1" text="타이틀"/>
+                <Cell col="2" text="작성자"/>
+              </Band>
+              <Band id="body">
+                <Cell cssclass="expr: (status == 0 ? &quot;&quot; :  status == 1 ? &quot;cell_modify&quot; : status == 2 ? &quot;cell_add&quot; : &quot;cell_del&quot;)" displaytype="imagecontrol"/>
+                <Cell col="1" text="bind:title" edittype="none" displaytype="normal"/>
+                <Cell col="2" text="bind:author" edittype="none" displaytype="normal"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button02_00" taborder="3" text="행삭제" top="142" width="138" height="48" onclick="Button02_00_onclick" right="24" cssclass="btn_WF_RowDel"/>
+        <Button id="Button02" taborder="2" text="행추가" top="142" width="138" height="48" onclick="Button02_onclick" right="Button02_00:10" cssclass="btn_WF_RowAdd"/>
+        <Static id="Static00_00_00" taborder="4" text="조회 목록" left="24" top="142" width="100" height="56"/>
+        <Div id="divSearch" taborder="5" text="Div00" left="0" top="0" height="125" right="0" cssclass="div_WF_Search">
+          <Layouts>
+            <Layout>
+              <Button id="btnSave" taborder="6" text="저장" top="49" width="138" height="48" onclick="btnSave_onclick" right="172"/>
+              <Button id="btnSearch" taborder="0" text="조회" top="49" width="138" height="48" onclick="btnSearch_onclick" right="24"/>
+              <Static id="Static00" taborder="1" text="제목" left="24" top="28" width="295" height="21" cssclass="sta_WF_SearchTxt"/>
+              <Edit id="edtTitle" taborder="2" left="24" top="49" width="295" height="48"/>
+              <Static id="dsad" taborder="3" text="내용" left="339" top="28" width="295" height="21" cssclass="sta_WF_SearchTxt"/>
+              <Edit id="edtContent" taborder="4" left="339" top="49" width="295" height="48"/>
+              <Static id="sd" taborder="5" text="작성자" left="654" top="28" width="295" height="21" cssclass="sta_WF_SearchTxt"/>
+              <Edit id="edtAuthor" taborder="7" left="654" top="49" width="295" height="48"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div00" taborder="7" text="Div00" left="390" top="583" width="1074" height="395" cssclass="div_WF_View">
+          <Layouts>
+            <Layout>
+              <Edit id="edtTitle2" taborder="0" left="38" top="83" width="295" height="48" canchange="changeCheck"/>
+              <Static id="Static00_00" taborder="1" text="제목" left="38" top="62" width="295" height="21" cssclass="sta_WF_SearchTxt"/>
+              <Edit id="edtContent2" taborder="2" left="353" top="83" width="295" height="48" canchange="changeCheck"/>
+              <Static id="dsad00" taborder="3" text="내용" left="38" top="151" width="610" height="21" cssclass="sta_WF_SearchTxt"/>
+              <Static id="sd00" taborder="4" text="작성자" left="353" top="62" width="295" height="21" cssclass="sta_WF_SearchTxt"/>
+              <Static id="Static00_00_01" taborder="5" text="상태" left="857" top="141" width="138" height="21" cssclass="sta_WF_SearchTxt"/>
+              <Static id="dsad00_00" taborder="6" text="수정 갯수" left="668" top="141" width="138" height="21" cssclass="sta_WF_SearchTxt"/>
+              <Static id="sd00_00" taborder="7" text="실패갯수" left="857" top="220" width="138" height="21" cssclass="sta_WF_SearchTxt"/>
+              <Static id="sd00_00_00" taborder="8" text="추가 갯수" left="668" top="220" width="138" height="21" cssclass="sta_WF_SearchTxt"/>
+              <Static id="Static00_00_01_00" taborder="9" text="알림 메시지" left="668" top="62" width="138" height="21" cssclass="sta_WF_SearchTxt"/>
+              <Edit id="Edit01" taborder="10" left="857" top="162" width="138" height="48" readonly="true"/>
+              <Edit id="Edit01_00" taborder="11" left="668" top="162" width="138" height="48" readonly="true"/>
+              <Edit id="Edit01_01" taborder="12" left="857" top="241" width="138" height="48" readonly="true"/>
+              <Edit id="Edit02" taborder="13" left="668" top="83" height="48" readonly="true" width="327"/>
+              <Edit id="Edit02_00" taborder="14" left="668" top="241" width="138" height="48" readonly="true"/>
+              <Static id="sd00_00_00_00" taborder="15" text="삭제 갯수" left="668" top="299" width="138" height="21" cssclass="sta_WF_SearchTxt"/>
+              <Edit id="Edit03" taborder="16" left="668" top="320" width="138" height="48" readonly="true"/>
+              <Static id="Static00_00_00_00" taborder="17" text="상세정보" left="38" top="28" width="100" height="34"/>
+              <TextArea id="TextArea00" taborder="18" left="38" top="172" width="610" height="196"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[// 전역변수
+this.isModify = false; // 행추가/삭제 시 true
+
+
+this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo) {
+	this.fnSearch();
+};
+
+this.btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo) {
+	var val = this.valCheck();
+	if(val) {
+		alert("값을 작성해주세요");
+		return;
+	}
+	
+	if(this.isModify) {
+		this.fnSave();
+	}else {
+		this.fnUpdate();
+	}
+	
+	
+};
+
+// 조회
+this.fnSearch = function () {
+    // 조건 셋팅
+    this.ds_search.clearData();
+	this.ds_search.addRow();
+    this.ds_search.setColumn(0, "title", this.divSearch.form.edtTitle.value);
+    this.ds_search.setColumn(0, "content", this.divSearch.form.edtContent.value);
+    this.ds_search.setColumn(0, "author", this.divSearch.form.edtAuthor.value);
+	
+    var strSvcId    = "search";
+    var strSvcUrl   = "svc::api/board/list";
+    var inData      = "ds_request=ds_search";
+    var outData     = "ds_list=ds_response";
+    var strArg      = "";
+    var callBackFnc = "fnCallback";
+    var isAsync     = true;
+	
+    this.transaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc, isAsync);
+};
+
+// 수정
+this.fnUpdate = function() {
+	var strSvcId    = "update";
+	var strSvcUrl   = "svc::api/board/list/update";
+	var inData      = "ds_request=ds_list:U";
+	var outData     = "ds_status=ds_response";
+	var strArg      = "";
+	var callBackFnc = "fnCallback";
+	var isAsync     = true;
+	
+    this.transaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc, isAsync);
+};
+
+// 저장
+this.fnSave = function() {
+	var strSvcId    = "save";
+	var strSvcUrl   = "svc::api/board/list/update";
+	var inData      = "ds_request=ds_list:U";
+	var outData     = "ds_status=ds_response";
+	var strArg      = "save=true";
+	var callBackFnc = "fnCallback";
+	var isAsync     = true;
+	
+    this.transaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc, isAsync);
+};
+
+
+
+this.fnCallback = function(svcID, errorCode, errorMsg)
+{
+    if (errorCode != 0) {
+        this.alert(errorCode + "\n" + errorMsg);
+        return;
+    }
+	
+    switch (svcID, a, b) {
+	case "search":
+		if (this.ds_list.rowcount < 1) {
+			trace("조회된 결과가 없습니다.");
+		}
+		
+	case "save":
+		trace(svcID, a, b);
+		
+		break;
+		
+	case "update":
+		trace(svcID, a, b);
+		
+		break;
+    }
+};
+
+this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_list.addRow();
+	var rowP = this.ds_list.rowposition;
+	
+	this.ds_list.setColumn(rowP, "status", 2);
+};
+
+this.Button02_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var rowP = this.ds_list.rowposition;
+	this.ds_list.setColumn(rowP, "status", 3);
+};
+
+
+// 수정 체크 위함
+this.changeCheck = function() {
+	var rowP = this.ds_list.rowposition;
+	
+	var staus = this.ds_list.getColumn(rowP, "status");
+	
+	if(staus == 0) {
+		this.ds_list.setColumn(rowP, "status", 1);
+	}
+}
+
+
+// 모든 값이 들어가있는지?
+this.valCheck = function () {
+	var rc = this.ds_list.getRowCount(); // 행 개수
+	for (var r = 0; r < rc; r++) {
+		var title   = this.ds_list.getColumn(r, "title");
+		var content = this.ds_list.getColumn(r, "content");
+		var author  = this.ds_list.getColumn(r, "author");
+		
+		// null/undefined/빈문자 모두 검증
+		if (!title || title === "") return true;
+		if (!content || content === "") return true;
+		if (!author || author === "") return true;
+	}
+	return false; // 문제 없으면 false
+};
+
+this.Form_Work_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fnSearch();
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_search" cancolumnchange="ds_search_cancolumnchange">
+        <ColumnInfo>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="content" type="STRING" size="256"/>
+          <Column id="author" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_list" cancolumnchange="ds_list_cancolumnchange">
+        <ColumnInfo>
+          <Column id="status" type="INT" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="content" type="STRING" size="256"/>
+          <Column id="author" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_status">
+        <ColumnInfo>
+          <Column id="status" type="STRING" size="256"/>
+          <Column id="message" type="STRING" size="256"/>
+          <Column id="updated" type="STRING" size="256"/>
+          <Column id="skipped" type="STRING" size="256"/>
+          <Column id="failed" type="STRING" size="256"/>
+          <Column id="inserted" type="STRING" size="256"/>
+          <Column id="deleted" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.edtContent2" propid="value" datasetid="ds_list" columnid="author"/>
+      <BindItem id="item1" compid="Div00.form.edtTitle2" propid="value" datasetid="ds_list" columnid="title"/>
+      <BindItem id="item2" compid="Div00.form.TextArea00" propid="value" datasetid="ds_list" columnid="content"/>
+      <BindItem id="item3" compid="Div00.form.Edit01_00" propid="value" datasetid="ds_status" columnid="updated"/>
+      <BindItem id="item4" compid="Div00.form.Edit02_00" propid="value" datasetid="ds_status" columnid="inserted"/>
+      <BindItem id="item5" compid="Div00.form.Edit03" propid="value" datasetid="ds_status" columnid="deleted"/>
+      <BindItem id="item6" compid="Div00.form.Edit01_01" propid="value" datasetid="ds_status" columnid="failed"/>
+      <BindItem id="item7" compid="Div00.form.Edit02" propid="value" datasetid="ds_status" columnid="message"/>
+      <BindItem id="item8" compid="Div00.form.Edit01" propid="value" datasetid="ds_status" columnid="status"/>
+    </Bind>
+  </Form>
+</FDL>
