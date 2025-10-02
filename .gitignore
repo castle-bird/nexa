@@ -38,4 +38,4 @@ out/
 
 
 ### nexa generated ###
-/resources/static/nexacro-ui/
+src/main/resources/static/nexacro-ui/
